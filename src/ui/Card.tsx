@@ -9,24 +9,28 @@ function Card({ country }: { country: CountryResponseType }) {
     region,
   } = country;
   return (
-    <div className="rounded-md bg-white shadow-md overflow-hidden">
+    <div className="rounded-md bg-white shadow-md dark:shadow-dark-gray dark:shadow-[0px_0px_8px] overflow-hidden dark:bg-dark-blue hover:scale-105 transition-transform cursor-pointer">
       <div>
-        <img src={png} alt={alt} className="w-full h-36 object-cover sm:h-56" />
+        <img
+          src={png}
+          alt={alt}
+          className="w-full h-56 object-cover sm:h-37.5"
+        />
       </div>
-      <div className="py-4 px-6">
+      <div className="pt-4 px-6 pb-8">
         <h3 className="font-bold text-base">{name.common}</h3>
         <ul className="mt-4">
           <li>
-            <span>Population: </span>
-            <span>{population}</span>
+            <b>Population: </b>
+            <span className="font-light">{population}</span>
           </li>
           <li>
-            <span>Region: </span>
-            <span>{region}</span>
+            <b>Region: </b>
+            <span className="font-light">{region}</span>
           </li>
           <li>
-            <span>Capital: </span>
-            <span>{capital}</span>
+            <b>Capital: </b>
+            <span className="font-light">{capital}</span>
           </li>
         </ul>
       </div>

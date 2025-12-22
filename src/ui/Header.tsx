@@ -1,14 +1,12 @@
-import { Moon } from "lucide-react";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 function Header() {
   return (
-    <header className="flex justify-between h-20 items-center shadow-md bg-white dark:bg-dark-blue">
-      <h1 className="font-medium text-xl">Where is the world?</h1>
-      {/* Impelement theme switch */}
-      <p className="flex gap-2 items-center">
-        <Moon size={20} />
-        Theme
-      </p>
+    <header className="h-20 shadow-md bg-white dark:bg-dark-blue fixed right-0 left-0 top-0">
+      <div className="flex justify-between items-center h-full max-w-360 mx-auto px-8">
+        <h1 className="font-medium text-xl">Where is the world?</h1>
+        <ThemeSwitcher />
+      </div>
     </header>
   );
 }
