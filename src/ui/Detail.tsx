@@ -80,21 +80,25 @@ function Detail({ country }: { country: CountryDetailsType }) {
 
         <div className="lg:flex lg:gap-4 mt-14 lg:items-center lg:flex-wrap">
           <b>Border Countries: </b>
-          <div className="mt-4 lg:mt-0 flex flex-wrap gap-4">
-            {neighbours?.length ? (
-              neighbours?.map(neighbour => (
-                <Button
-                  key={neighbour.name.common}
-                  onClick={() => handleNavigate(neighbour.name.common)}
-                  className="h-8 w-32 cursor-pointer bg-white hover:bg-very-dark-blue/10 dark:bg-dark-blue dark:hover:bg-white/10 transition-colors shadow-[0px_0px_6px] shadow-dark-blue/25 dark:shadow-very-dark-blue"
-                >
-                  {neighbour.name.common}
-                </Button>
-              ))
-            ) : (
-              <span>{error ? error.message : "No border countries"}</span>
-            )}
-          </div>
+          {isPending ? (
+            <p>Loading...</p>
+          ) : (
+            <div className="mt-4 lg:mt-0 flex flex-wrap gap-4">
+              {neighbours?.length ? (
+                neighbours?.map(neighbour => (
+                  <Button
+                    key={neighbour.name.common}
+                    onClick={() => handleNavigate(neighbour.name.common)}
+                    className="h-8 w-32 cursor-pointer bg-white hover:bg-very-dark-blue/10 dark:bg-dark-blue dark:hover:bg-white/10 transition-colors shadow-[0px_0px_6px] shadow-dark-blue/25 dark:shadow-very-dark-blue"
+                  >
+                    {neighbour.name.common}
+                  </Button>
+                ))
+              ) : (
+                <span>{error ? error.message : "No border countries"}</span>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>
