@@ -25,6 +25,7 @@ export async function getCountry(name: string | undefined) {
 }
 
 export async function getNeighbours(codes: string[] | undefined) {
+  if (codes === undefined) throw new Error("No border Countries found !");
   const res = await fetch(
     `${BASE_URL}alpha?codes=${codes?.join(",")}&fields=name`
   );
