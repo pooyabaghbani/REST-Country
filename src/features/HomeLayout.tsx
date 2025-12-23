@@ -1,15 +1,19 @@
-import { Search } from "lucide-react";
+import { useEffect } from "react";
+import { useSearchParams } from "react-router";
+
 import Filter from "../ui/Filter";
 import Input from "../ui/Input";
-import { useSearchParams } from "react-router";
+
+import { Search } from "lucide-react";
+
 import DisplayCountries from "../features/DisplayCountries";
-import { useEffect } from "react";
 
 function HomeLayout() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   // handle search and using it as searchParams for a global state
   function handleSearch(search: string) {
+    if (searchParams.has("region")) searchParams.delete("region");
     if (search.length === 0) {
       searchParams.delete("country");
       setSearchParams(searchParams);
@@ -21,6 +25,13 @@ function HomeLayout() {
 
   // get initial search params and set it as defaultvalue of input field
   useEffect(() => {
+    const region = searchParams.get("region");
+    setSearchParams(searchParams);
+    if (region) {
+      searchParams.delete("country");
+      setSearchParams(searchParams);
+      return;
+    }
     const search = searchParams.get("country");
     if (search === null) return;
     searchParams.set("country", search);
@@ -40,7 +51,10 @@ function HomeLayout() {
           }}
         />
 
-        <Filter />
+        <Filter
+          title="Filter by Region"
+          options={["Africa", "America", "Asia", "Europe", "Oceania"]}
+        />
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 pb-10">
         <DisplayCountries />

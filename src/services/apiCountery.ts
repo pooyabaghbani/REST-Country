@@ -8,9 +8,9 @@ export async function getCountries(
   region: string | null
 ) {
   const url = `${BASE_URL}${search || region ? "" : "all"}${
-    !search ? "" : `name/${search}`
+    search ? `name/${search}` : ""
   }${
-    !region ? "" : `region/${region}`
+    region ? `region/${region}` : ""
   }?fields=name,capital,flags,population,region`;
   console.log(url);
   const res = await fetch(url);
