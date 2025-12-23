@@ -1,8 +1,8 @@
-import { useCounterys } from "../features/country/getCounteries";
+import { useCountries } from "../features/country/getCounteries";
 import Card from "../ui/Card";
 
 function Home() {
-  const { counteries, error, isPending } = useCounterys();
+  const { counteries, error, isPending } = useCountries();
 
   if (isPending) return <div>Loading...</div>;
 

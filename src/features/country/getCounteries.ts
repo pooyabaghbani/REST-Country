@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getCountries } from "../../services/apiCountery";
 
-export function useCounterys() {
+export function useCountries() {
   const {
     isPending,
     data: counteries,

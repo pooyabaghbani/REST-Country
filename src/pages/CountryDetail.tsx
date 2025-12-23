@@ -1,8 +1,7 @@
-import { useParams } from "react-router";
+import DetailsLayout from "../features/country/DetailLayout";
 
 function CountryDetail() {
-  const { country } = useParams();
-  return <div>{country}</div>;
+  return <DetailsLayout />;
 }
 
 export default CountryDetail;
