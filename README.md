@@ -24,5 +24,6 @@ Styles: Tailwind
 - **react-query**
 - **typescript**
 - **lucide-react**
+- **react-compiler**
 
 <hr>

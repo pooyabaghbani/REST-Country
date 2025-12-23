@@ -3,10 +3,18 @@ import type { CountryDetailsType, CountryResponseType } from "../utils/types";
 
 const BASE_URL = "https://restcountries.com/v3.1/";
 
-export async function getCountries() {
-  const res = await fetch(
-    `${BASE_URL}all?fields=name,capital,flags,population,region`
-  );
+export async function getCountries(
+  search: string | null,
+  region: string | null
+) {
+  const url = `${BASE_URL}${search || region ? "" : "all"}${
+    !search ? "" : `name/${search}`
+  }${
+    !region ? "" : `region/${region}`
+  }?fields=name,capital,flags,population,region`;
+  console.log(url);
+  const res = await fetch(url);
+
   if (res.status !== 200)
     throw new Error(errors[res.status as keyof typeof errors]);
   const data: CountryResponseType[] = await res.json();
